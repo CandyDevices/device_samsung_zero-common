@@ -15,7 +15,11 @@
 #
 
 # Radio
-BOARD_PROVIDES_LIBRIL := true
+PRODUCT_PACKAGES += \
+	libxml2 \
+	libprotobuf-cpp-full \
+	libsecril-client \
+	libsecril-client-sap
 
 # Dual-SIM Support
 ifeq ($(BOARD_HAS_DUAL_SIM),true)
