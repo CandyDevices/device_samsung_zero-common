@@ -32,7 +32,6 @@
 #include <media/hardware/OMXPluginBase.h>
 #include <media/openmax/OMX_IVCommon.h>
 #include <system/graphics.h>
-#include <system/window.h>
 #include <ui/GraphicBuffer.h>
 #include <ui/GraphicBufferMapper.h>
 #include <ui/Rect.h>
