@@ -252,6 +252,8 @@ vendor/etc/nxp/mVoIPSec/Tx_ControlParams_WIDEBAND_WIRED_HEADPHONE.txt
 vendor/etc/nxp/mVoIPSec/Tx_ControlParams_WIDEBAND_WIRED_HEADSET.txt
 vendor/lib/libLifevibes_lvverx.so
 vendor/lib/libLifevibes_lvvetx.so
+vendor/lib/libsmemlog.so
+vendor/lib64/libsmemlog.so
 
 # OMX Core
 lib/libExynosOMX_Core.so
