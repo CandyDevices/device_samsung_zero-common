@@ -24,6 +24,8 @@ using namespace std;
 #ifndef EXYNOS5_POWER_HAL_POWER_H_INCLUDED
 #define EXYNOS5_POWER_HAL_POWER_H_INCLUDED
 
+#define PROFILE_INVALID             -2
+
 #define PROFILE_SCREEN_OFF          -1
 #define PROFILE_POWER_SAVE           0
 #define PROFILE_BALANCED             1
@@ -43,12 +45,30 @@ using namespace std;
 #define POWER_FINGERPRINT_REGULATOR       "/sys/class/fingerprint/fingerprint/regulator"
 #define POWER_FINGERPRINT_WAKELOCKS       "/sys/class/fingerprint/fingerprint/wakelocks"
 
+#define POWER_DEFAULT_BOOSTPULSE    50000
+
+#ifdef POWER_MULTITHREAD_LOCK_PROTECTION
+  #define POWER_LOCK()      pthread_mutex_lock(&power->lock)
+  #define POWER_UNLOCK()    pthread_mutex_unlock(&power->lock)
+#else
+  #define POWER_LOCK()      do { } while(0)
+  #define POWER_UNLOCK()    do { } while(0)
+#endif /* POWER_MULTITHREAD_LOCK_PROTECTION */
+
+enum sec_device_variant {
+	FLAT,
+	EDGE
+};
+
 struct sec_power_module {
 
 	struct power_module base;
 	pthread_mutex_t lock;
 
 	bool initialized;
+	bool dozing;
+
+	enum sec_device_variant variant;
 
 	struct {
 		int current;
@@ -71,15 +91,19 @@ static void power_init(struct power_module *module);
 static void power_hint(struct power_module *module, power_hint_t hint, void *data);
 
 /** Profiles */
-static void power_set_profile(int profile);
+static void power_set_profile(struct sec_power_module *power, int profile);
+static void power_reset_profile(struct sec_power_module *power);
 
 /** Boost */
-static void power_boostpulse(int duration);
+static void power_boostpulse(struct sec_power_module *power, int duration);
+static void power_boostpulse_cpu(struct sec_power_module *power, int core, int duration);
+static void power_boostpulse_cpu_cpugov(int core, int duration);
+static void power_boostpulse_cpu_fallback(struct sec_power_module *power, int core, int duration);
 
 /** Inputs */
 static void power_fingerprint_state(bool state);
-static void power_dt2w_state(bool state);
-static void power_input_device_state(bool state);
+static void power_dt2w_state(struct sec_power_module *power, bool state);
+static void power_input_device_state(struct sec_power_module *power, bool state);
 static void power_set_interactive(struct power_module* module, int on);
 
 /** Features */
