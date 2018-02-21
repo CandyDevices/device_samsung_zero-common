@@ -35,7 +35,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     HealthService \
     SamsungServiceMode
-
-# Skeletons
-PRODUCT_PACKAGES += \
-	android.hidl.base@1.0
