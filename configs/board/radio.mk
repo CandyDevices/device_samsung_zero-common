@@ -15,7 +15,8 @@
 #
 
 # Radio
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
 # Dual-SIM Support
 ifeq ($(BOARD_HAS_DUAL_SIM),true)
