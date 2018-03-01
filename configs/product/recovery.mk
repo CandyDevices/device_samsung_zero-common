@@ -14,15 +14,7 @@
 # limitations under the License.
 #
 
-# Camera
+# Filesystem tools for resizing system partition filesystem
 PRODUCT_PACKAGES += \
-    camera.exynos5 \
-    libexynoscamera_shim \
-    camera.device@1.0-impl \
-    camera.device@3.2-impl \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service
-
-# Apps
-PRODUCT_PACKAGES += \
-    Camera2
+	e2fsck_static \
+	resize2fs_static

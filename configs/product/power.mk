@@ -16,11 +16,4 @@
 
 # Power
 PRODUCT_PACKAGES += \
-    power.exynos5 \
-    android.hardware.power@1.0-service \
-    android.hardware.power@1.0-impl \
-    vendor.lineage.power@1.0-impl
-
-# permission-updater
-PRODUCT_COPY_FILES += \
-    device/samsung/zero-common/power/android.hardware.power@1.0-service.rc:system/vendor/etc/init/android.hardware.power@1.0-service.rc
+   android.hardware.power@1.0-service.zero

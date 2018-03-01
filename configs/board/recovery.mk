@@ -22,3 +22,6 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/fstab.samsungexynos7420.recovery
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_HAS_DOWNLOAD_MODE := true
+
+# Releasetools - for resizing system filesystem
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/zero-common/releasetools
