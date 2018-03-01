@@ -139,11 +139,11 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.lineage.power</name>
+        <name>vendor.candy.power</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>ILineagePower</name>
+            <name>ICandyPower</name>
             <instance>default</instance>
         </interface>
     </hal>

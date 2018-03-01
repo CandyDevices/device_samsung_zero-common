@@ -21,8 +21,8 @@
 
 #include <android/hardware/power/1.0/IPower.h>
 
-#ifdef POWER_HAS_LINEAGE_HINTS
-#include <vendor/lineage/power/1.0/ILineagePower.h>
+#ifdef POWER_HAS_CANDY_HINTS
+#include <vendor/candy/power/1.0/ICandyPower.h>
 #endif
 
 #include <hidl/Status.h>
@@ -111,10 +111,10 @@ using ::android::hardware::power::V1_0::IPower;
 using ::android::hardware::power::V1_0::PowerHint;
 using ::android::hardware::power::V1_0::PowerStatePlatformSleepState;
 using ::android::hardware::power::V1_0::Status;
-#ifdef POWER_HAS_LINEAGE_HINTS
-using ::vendor::lineage::power::V1_0::ILineagePower;
-using ::vendor::lineage::power::V1_0::LineageFeature;
-using ::vendor::lineage::power::V1_0::LineagePowerHint;
+#ifdef POWER_HAS_CANDY_HINTS
+using ::vendor::candy::power::V1_0::ICandyPower;
+using ::vendor::candy::power::V1_0::CandyFeature;
+using ::vendor::candy::power::V1_0::CandyPowerHint;
 #endif
 
 using ::android::hardware::Return;
@@ -155,7 +155,7 @@ enum class SecDeviceVariant : int32_t {
 };
 
 struct Power : public IPower,
-               public ILineagePower {
+               public ICandyPower {
 
 	Power();
 	~Power();
@@ -168,9 +168,9 @@ struct Power : public IPower,
 	Return<void> setFeature(Feature feature, bool activate)  override;
 	Return<void> getPlatformLowPowerStats(getPlatformLowPowerStats_cb _hidl_cb)  override;
 
-	// Methods from ::vendor::lineage::power::V1_0::ILineagePower follow.
-#ifdef POWER_HAS_LINEAGE_HINTS
-	Return<int32_t> getFeature(LineageFeature feature)  override;
+	// Methods from ::vendor::candy::power::V1_0::ICandyPower follow.
+#ifdef POWER_HAS_CANDY_HINTS
+	Return<int32_t> getFeature(CandyFeature feature)  override;
 #endif
 
 private:

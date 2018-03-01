@@ -41,12 +41,12 @@ LOCAL_SHARED_LIBRARIES := \
 	liblog \
 	libutils \
 	android.hardware.power@1.0 \
-	vendor.lineage.power@1.0
+	vendor.candy.power@1.0
 
 LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter -Wno-unused-function
 
-ifneq (,$(wildcard hardware/lineage/interfaces/power/1.0/ vendor/cmsdk/))
-  LOCAL_CFLAGS += -DPOWER_HAS_LINEAGE_HINTS
+ifneq (,$(wildcard hardware/candy/interfaces/power/1.0/))
+  LOCAL_CFLAGS += -DPOWER_HAS_CANDY_HINTS
 endif
 
 ifneq (,$(wildcard hardware/nexus/interfaces/power/1.0/))

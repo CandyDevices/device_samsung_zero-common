@@ -87,9 +87,9 @@ status_t Power::registerAsSystemService() {
 	LOG_ALWAYS_FATAL_IF(ret != 0, "%s: failed to register IPower HAL Interface as service (%d), aborting...", __func__, ret);
 	ALOGI("%s: registered IPower HAL Interface!", __func__);
 
-	ret = ILineagePower::registerAsService();
-	LOG_ALWAYS_FATAL_IF(ret != 0, "%s: failed to register ILineagePower HAL Interface as service (%d), aborting...", __func__, ret);
-	ALOGI("%s: registered ILineagePower HAL Interface!", __func__);
+	ret = ICandyPower::registerAsService();
+	LOG_ALWAYS_FATAL_IF(ret != 0, "%s: failed to register ICandyPower HAL Interface as service (%d), aborting...", __func__, ret);
+	ALOGI("%s: registered ICandyPower HAL Interface!", __func__);
 
 	return 0;
 }
@@ -125,9 +125,9 @@ Return<void> Power::powerHint(PowerHint hint, int32_t data)  {
 		/*
 		 * Profiles
 		 */
-		case_uint32_t (LineagePowerHint::SET_PROFILE):
+		case_uint32_t (CandyPowerHint::SET_PROFILE):
 		{
-			ALOGV("%s: LineagePowerHint::SET_PROFILE(%d)", __func__, data);
+			ALOGV("%s: CandyPowerHint::SET_PROFILE(%d)", __func__, data);
 			mRequestedProfile = static_cast<SecPowerProfiles>(data);
 			setProfile(mRequestedProfile);
 			break;
@@ -216,15 +216,15 @@ Return<void> Power::getPlatformLowPowerStats(getPlatformLowPowerStats_cb _hidl_c
 	return Void();
 }
 
-// Methods from ::vendor::lineage::power::V1_0::ILineagePower follow.
-#ifdef POWER_HAS_LINEAGE_HINTS
-Return<int32_t> Power::getFeature(LineageFeature feature)  {	
+// Methods from ::vendor::candy::power::V1_0::ICandyPower follow.
+#ifdef POWER_HAS_CANDY_HINTS
+Return<int32_t> Power::getFeature(CandyFeature feature)  {	
 	ALOGV("%s: enter; feature=%d", __func__, feature);
 	power_lock();
 
 	switch_uint32_t (feature)
 	{
-		case_uint32_t (LineageFeature::SUPPORTED_PROFILES):
+		case_uint32_t (CandyFeature::SUPPORTED_PROFILES):
 		{
 			return static_cast<int>(SecPowerProfiles::MAX_PROFILES);
 		}
