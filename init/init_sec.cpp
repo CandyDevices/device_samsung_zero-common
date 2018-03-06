@@ -267,7 +267,7 @@ void vendor_load_properties()
     property_override("ro.product.model", model);
     property_override("ro.product.device", device);
     property_override("ro.build.product", product);
-    property_override("ro.lineage.device", device);
+    property_override("ro.candy.device", device);
     property_override("ro.vendor.product.device", device);
     property_override("ro.build.description", description_orig);
     property_override("ro.build.fingerprint", fingerprint_orig);
