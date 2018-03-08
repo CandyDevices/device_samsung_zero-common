@@ -19,3 +19,4 @@ BOARD_SECCOMP_POLICY += device/samsung/zero-common/seccomp
 
 # Sepolicy
 BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
+-include device/qcom/sepolicy/sepolicy.mk
