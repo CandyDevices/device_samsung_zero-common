@@ -69,11 +69,8 @@
 
 ####################################
 # data files
-/data/camera(/.*)?           u:object_r:camera_data_file:s0
-/data/nfc(/.*)?              u:object_r:nfc_data_file:s0
 /data/.cid.info              u:object_r:wifi_data_file:s0
 /data/.wifiver.info          u:object_r:wifi_data_file:s0
-/data/misc/radio(/.*)?       u:object_r:radio_data_file:s0
 
 # biometrics
 /data/biometrics(/.*)?	     u:object_r:biometrics_data_file:s0
@@ -103,7 +100,6 @@
 /data/data/com.android.providers.telephony/databases(/.*)?     u:object_r:radio_data_file:s0
 /data/data/com.android.providers.telephony/shared_prefs(/.*)?  u:object_r:radio_data_file:s0
 /sys/devices/virtual/misc/multipdp(/.*)     u:object_r:sysfs_multipdp_writable:s0
-/dev/socket/rild2                           u:object_r:rild_socket:s0
 /dev/socket/rild-debug[0-9]*                u:object_r:rild_debug_socket:s0
 
 ####################################
