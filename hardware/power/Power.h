@@ -153,8 +153,12 @@ enum class SecDeviceVariant : int32_t {
 	EDGE = 2,
 };
 
-struct Power : public IPower,
-               public ICandyPower {
+struct Power : 
+      public IPower
+#ifdef POWER_HAS_CANDY_HINTS
+    , public ICandyPower
+#endif
+{
 
 	Power();
 	~Power();

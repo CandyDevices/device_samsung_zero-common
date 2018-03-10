@@ -87,9 +87,13 @@ status_t Power::registerAsSystemService() {
 	LOG_ALWAYS_FATAL_IF(ret != 0, "%s: failed to register IPower HAL Interface as service (%d), aborting...", __func__, ret);
 	ALOGI("%s: registered IPower HAL Interface!", __func__);
 
+#ifdef POWER_HAS_CANDY_HINTS
 	ret = ICandyPower::registerAsService();
 	LOG_ALWAYS_FATAL_IF(ret != 0, "%s: failed to register ICandyPower HAL Interface as service (%d), aborting...", __func__, ret);
 	ALOGI("%s: registered ICandyPower HAL Interface!", __func__);
+#else
+	ALOGI("%s: current ROM does not support ICandyPower HAL Interface!", __func__);
+#endif
 
 	return 0;
 }
@@ -129,6 +133,7 @@ Return<void> Power::powerHint(PowerHint hint, int32_t data)  {
 		/*
 		 * Profiles
 		 */
+#ifdef POWER_HAS_CANDY_HINTS
 		case_uint32_t (CandyPowerHint::SET_PROFILE):
 		{
 			ALOGV("%s: CandyPowerHint::SET_PROFILE(%d)", __func__, data);
@@ -136,6 +141,7 @@ Return<void> Power::powerHint(PowerHint hint, int32_t data)  {
 			setProfile(mRequestedProfile);
 			break;
 		}
+#endif
 		case_uint32_t (PowerHint::LOW_POWER):
 		{
 			ALOGV("%s: PowerHint::LOW_POWER(%d)", __func__, data);
