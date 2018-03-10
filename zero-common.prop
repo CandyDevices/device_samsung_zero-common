@@ -145,34 +145,6 @@ wifi.interface=wlan0
 #
 ro.zygote.disable_gl_preload=1
 
-# Audio
-audio_hal.force_wideband=true
-
-# Display
-ro.opengles.version=196609
-
-# Radio
-rild.libargs=-d /dev/smd0
-ril.subscription.types=NV,RUIM
-persist.radio.snapshot_enabled=1
-persist.radio.snapshot_timer=22
-ro.ril.ecclist=911,#911,*911
-persist.rmnet.mux=enabled
-telephony.lteOnCdmaDevice=1
-ro.telephony.default_network=10
-ro.config.combined_signal=true
-ro.telephony.default_cdma_sub=1
-
-# Carrier definitions
-ro.cdma.home.operator.numeric=310120
-ro.cdma.home.operator.alpha=Sprint
-gsm.sim.operator.alpha=Sprint
-gsm.sim.operator.numeric=310120
-gsm.sim.operator.iso-country=us
-gsm.operator.alpha=Sprint
-gsm.operator.numeric=310120
-gsm.operator.iso-country=us
-
 #
 # END zero device-properties
 ###
