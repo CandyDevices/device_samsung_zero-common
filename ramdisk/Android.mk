@@ -50,6 +50,16 @@ LOCAL_SRC_FILES         := init.rilchip.rc
 LOCAL_MODULE_PATH       := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
+ifneq ($(filter zerofltespr zeroltespr,$(TARGET_DEVICE)),)
+include $(CLEAR_VARS)
+LOCAL_MODULE := system/etc/init/init.rilcommon.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := init.rilcommon.rc
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH := $(TARGET_OUT_SYSTEM)/etc/init
+include $(BUILD_PREBUILT)
+endif
+
 include $(CLEAR_VARS)
 LOCAL_MODULE            := init.wifi.rc
 LOCAL_MODULE_TAGS       := optional eng
@@ -73,6 +83,16 @@ LOCAL_MODULE_CLASS	:= ETC
 LOCAL_SRC_FILES		:= init.samsungexynos7420.rc
 LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+
+ifneq ($(filter zerofltespr zeroltespr,$(TARGET_DEVICE)),)
+include $(CLEAR_VARS)
+LOCAL_MODULE := system/etc/init/qmuxd.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := qmuxd.rc
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH := $(TARGET_OUT_SYSTEM)/etc/init
+include $(BUILD_PREBUILT)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE		:= ueventd.samsungexynos7420.rc
