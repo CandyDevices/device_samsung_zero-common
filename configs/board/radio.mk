@@ -15,7 +15,7 @@
 #
 
 # Radio
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 BOARD_PROVIDES_RILD := true
 

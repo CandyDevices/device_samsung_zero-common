@@ -35,7 +35,7 @@
 #include <sys/types.h>
 #include <libril/ril_ex.h>
 
-#include <zero-helpers.h>
+#include "zero-helpers.h"
 
 #define LIB_PATH_PROPERTY   "rild.libpath"
 #define LIB_ARGS_PROPERTY   "rild.libargs"
